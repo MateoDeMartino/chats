@@ -31,7 +31,7 @@ class Message_controller extends CI_controller{
         $idUser = $data['idUser']; 
         $idReciever = $data['idReciever'];
         
-        //redirect("main_controller/indexChat?idUser=$idUser&idReciever=$idReciever");
+        redirect("main_controller/indexChat?idUser=$idUser&idReciever=$idReciever");
         
     }
 

@@ -25,7 +25,7 @@ class Main_controller extends CI_controller{
         $datos['contacts'] = $this->Contacts_Model->getContacts($this->session->userdata('id'));
         $datos['user'] = $this->Login_Model->getUserId($this->session->userdata('id'));
 
-        $this->load->view('index', $datos);
+        $this->load->view('index2', $datos);
     }
 
     public function indexChat(){
@@ -34,7 +34,7 @@ class Main_controller extends CI_controller{
         $datos['user'] = $this->Login_Model->getUserId($_GET['idUser']);
         $datos['messages'] = $this->Message_Model->getChatUser($_GET['idUser'],$_GET['idReciever']);
          
-        $this->load->view('index',$datos);
+        $this->load->view('index2',$datos);
     }
 
     public function addContact(){

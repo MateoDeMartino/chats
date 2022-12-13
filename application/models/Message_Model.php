@@ -7,10 +7,11 @@ class Message_Model extends CI_Model{
     }
 
     public function enterMessage($data){
-        var_dump($data['date']);
+        //var_dump($data['date']);
         //$date = $data['date'];
         //var_dump ($date('H:i'));
         //var_dump($data['hour']);
+        //$query = 'insert into message (id_first_user, content, id_second_user, date)'
         $this->db->insert('message', array('id_first_user'=>$data['idUser'],'content'=>$data['message'],'id_second_user'=>$data['idReciever'],'date'=>$data['date']));
     }
 
