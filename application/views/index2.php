@@ -10,117 +10,130 @@
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    
 </head>
 <body>
     
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
+<?php
+    if(isset($_GET['idReciever'])){
+        $idReciever2 = $_GET['idReciever'];
+    }else{
+        $idReciever2 = 0;
+    }
+    $idUser = $user[0]['id'];
+?>
 <div class="container">
 <div class="row clearfix">
     <div class="col-lg-12">
         <div class="card chat-app">
             <div id="plist" class="people-list">
+
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-search"></i></span>
                     </div>
                     <input type="text" class="form-control" placeholder="Search...">
                 </div>
-                <ul class="list-unstyled chat-list mt-2 mb-0">
+
+                <ul class="list-unstyled chat-list mt-2 mb-0 ">
+                    <?php 
+                        foreach($contacts as $element){
+                            $idSender = $element['id'];
+                            if($idSender == $idUser){
+                            }else{
+                                $idReciever = $element['id'];
+                    ?>
+                    <button role="link" onclick="window.location.href='../main_controller/indexChat?idUser=<?php echo $idUser; ?>&idReciever=<?php echo $idReciever; ?>'"  aria-pressed="true" class="btn  widght=100 " >
                     <li class="clearfix">
                         <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
                         <div class="about">
-                            <div class="name">Vincent Porter</div>
+                            <div class="name"><?php echo $element['name']," ", $element['surname']  ?></div>
                             <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>                                            
                         </div>
                     </li>
-                    <li class="clearfix active">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
-                        <div class="about">
-                            <div class="name">Aiden Chavez</div>
-                            <div class="status"> <i class="fa fa-circle online"></i> online </div>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar">
-                        <div class="about">
-                            <div class="name">Mike Thomas</div>
-                            <div class="status"> <i class="fa fa-circle online"></i> online </div>
-                        </div>
-                    </li>                                    
-                    <li class="clearfix">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
-                        <div class="about">
-                            <div class="name">Christian Kelly</div>
-                            <div class="status"> <i class="fa fa-circle offline"></i> left 10 hours ago </div>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="avatar">
-                        <div class="about">
-                            <div class="name">Monica Ward</div>
-                            <div class="status"> <i class="fa fa-circle online"></i> online </div>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar">
-                        <div class="about">
-                            <div class="name">Dean Henry</div>
-                            <div class="status"> <i class="fa fa-circle offline"></i> offline since Oct 28 </div>
-                        </div>
-                    </li>
+                    </button>
+                    <hr>
+                    <?php }} ?> 
                 </ul>
             </div>
+
             <div class="chat">
                 <div class="chat-header clearfix">
                     <div class="row">
                         <div class="col-lg-6">
+                            <?php if(isset($reciever)){ ?>
                             <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
                                 <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
                             </a>
+                            
                             <div class="chat-about">
-                                <h6 class="m-b-0">Aiden Chavez</h6>
-                                <small>Last seen: 2 hours ago</small>
+                                <button role="link"  onclick="window.location.href='../main_controller/addContact'"  class="btn"><?php echo $reciever[0]['name']," ", $reciever[0]['surname']  ?></button>
                             </div>
+                            <?php } ?>
                         </div>
+
                         <div class="col-lg-6 hidden-sm text-right">
-                            <a href="javascript:void(0);" class="btn btn-outline-secondary"><i class="fa fa-camera"></i></a>
-                            <a href="javascript:void(0);" class="btn btn-outline-primary"><i class="fa fa-image"></i></a>
-                            <a href="javascript:void(0);" class="btn btn-outline-info"><i class="fa fa-cogs"></i></a>
-                            <a href="javascript:void(0);" class="btn btn-outline-warning"><i class="fa fa-question"></i></a>
+                            <button role="link"  onclick="window.location.href='../main_controller/addContact'"  class="btn btn-outline-dark">Profile</button>
+                            <button role="link"  onclick="window.location.href='../main_controller/addContact'"  class="btn btn-outline-dark">Add Contact</button>
+                            <button role="link"  onclick="window.location.href='../main_controller/logout'"  class="btn btn-danger">logout</button>
                         </div>
                     </div>
                 </div>
+
                 <div class="chat-history">
                     <ul class="m-b-0">
-                        <li class="clearfix">
-                            <div class="message-data text-right">
-                                <span class="message-data-time">10:10 AM, Today</span>
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
-                            </div>
-                            <div class="message other-message float-right"> Hi Aiden, how are you? How is the project coming along? </div>
-                        </li>
-                        <li class="clearfix">
-                            <div class="message-data">
-                                <span class="message-data-time">10:12 AM, Today</span>
-                            </div>
-                            <div class="message my-message">Are we meeting today?</div>                                    
-                        </li>                               
-                        <li class="clearfix">
-                            <div class="message-data">
-                                <span class="message-data-time">10:15 AM, Today</span>
-                            </div>
-                            <div class="message my-message">Project has been already finished and I have results to show you.</div>
-                        </li>
+                    <?php
+                        if(isset($messages)){
+          
+                            foreach($messages as $elemnt){
+                                $message = $elemnt['content'];
+                                $date = strtotime($elemnt['date']);
+                                $newDate = date(' H:i',$date);
+
+                                if ($elemnt['id_second_user'] != $idUser){
+                                    $idReciever2 = $elemnt['id_second_user'];
+                                    //$nameContact = $elemnt['name'];
+                                    //$surnameContact = $elemnt['surname']; 
+                  
+                                }
+                                if($message != null){
+
+                                    if($elemnt['id_first_user']==$idUser){
+                                        //Sender Message
+                                        echo "<li class='clearfix'>";
+                                        echo "<div class='message-data text-right'>";
+                                        echo "<span class='message-data-time'>$newDate</span>";
+                                        echo "<img src='https://bootdey.com/img/Content/avatar/avatar7.png' alt='avatar'>";
+                                        echo "</div>";
+                                        echo "<div class='message other-message float-right'> $message</div>";
+                                        echo "</li>";
+                                    }else if($elemnt['id_second_user']==$idUser){
+                                        //Reciever Message
+                                        echo "<li class='clearfix'>";
+                                        echo "<div class='message-data'>";
+                                        echo "<span class='message-data-time'>$newDate</span>";
+                                        echo "</div>";
+                                        echo "<div class='message my-message'>$message</div>";
+                                        echo "</li>";
+                                    }
+                                }
+                            }
+                        }
+                    ?>                              
                     </ul>
                 </div>
+
                 <div class="chat-message clearfix">
                     <div class="input-group mb-0">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-send"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Enter text here...">                                    
+                    <?php echo form_open('message_controller/entermessage');?>
+                    
+                        <input type="text" size="98" class="form-control" name="content" placeholder="Enter text here...">                                    
+                        <input type="hidden" value="<?php echo date("Y/m/d H:i"); ?>" name="date" size="10" />
+                        <input type="hidden" value="<?php echo $idUser.""?>"  name="idUser">
+                        <input type="hidden" value="<?php echo $idReciever2.""?>"  name="idReciever">
+          
+                        <?php echo form_close();?>
                     </div>
                 </div>
             </div>
@@ -131,7 +144,7 @@
 
 <style type="text/css">
 body{
-    background-color: #f4f7f6;
+    background-color: lightblue;
     margin-top:20px;
 }
 .card {
@@ -158,21 +171,20 @@ body{
     border-left: 1px solid #eaeaea
 }
 
-.people-list {
-    -moz-transition: .5s;
-    -o-transition: .5s;
-    -webkit-transition: .5s;
-    transition: .5s
+.btn:hover {    
+    background-color:lightblue;
+    outline-color:white;
 }
 
 .people-list .chat-list li {
     padding: 10px 15px;
     list-style: none;
-    border-radius: 3px
+    border-radius: 3px;
+     
 }
 
 .people-list .chat-list li:hover {
-    background: #efefef;
+    
     cursor: pointer
 }
 
@@ -204,6 +216,7 @@ body{
     font-size: 13px
 }
 
+
 .chat .chat-header {
     padding: 15px 20px;
     border-bottom: 2px solid #f4f7f6
@@ -222,7 +235,11 @@ body{
 
 .chat .chat-history {
     padding: 20px;
-    border-bottom: 2px solid #fff
+    border-bottom: 2px solid #fff;
+    background-color:lightgrey;
+    width: 800px;
+    height: 590px;
+    overflow: auto;
 }
 
 .chat .chat-history ul {
@@ -277,7 +294,7 @@ body{
 }
 
 .chat .chat-history .my-message {
-    background: #efefef
+    background: white;
 }
 
 .chat .chat-history .my-message:after {
@@ -295,13 +312,13 @@ body{
 }
 
 .chat .chat-history .other-message {
-    background: #e8f1f3;
+    background: lightblue;
     text-align: right
 }
 
 .chat .chat-history .other-message:after {
-    border-bottom-color: #e8f1f3;
-    left: 93%
+    border-bottom-color: lightblue;
+    left: 85%
 }
 
 .chat .chat-message {

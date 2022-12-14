@@ -21,19 +21,16 @@ class Main_controller extends CI_controller{
     }
 
     public function index(){
-        
         $datos['contacts'] = $this->Contacts_Model->getContacts($this->session->userdata('id'));
         $datos['user'] = $this->Login_Model->getUserId($this->session->userdata('id'));
-
         $this->load->view('index2', $datos);
     }
 
     public function indexChat(){
-
         $datos['contacts'] = $this->Contacts_Model->getContacts($_GET['idUser']);
         $datos['user'] = $this->Login_Model->getUserId($_GET['idUser']);
         $datos['messages'] = $this->Message_Model->getChatUser($_GET['idUser'],$_GET['idReciever']);
-         
+        $datos['reciever'] = $this->Contacts_Model->getById($_GET['idReciever']); 
         $this->load->view('index2',$datos);
     }
 

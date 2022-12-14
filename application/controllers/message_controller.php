@@ -18,9 +18,6 @@ class Message_controller extends CI_controller{
         
         $date = strtotime($this->input->post('date'));
         $data['date'] = date('Y/m/d H:i',$date);
-        
-        //$date = strtotime($this->input->post('date'));
-        //$data['hour'] = date('H:i',$date);
 
         $datos['chats'] = $this->Chats_Model->getAll();
         $datos['user'] = $data['idUser'];
@@ -28,7 +25,7 @@ class Message_controller extends CI_controller{
         $this->Message_Model->enterMessage($data);
         $datos['messages'] = $this->Message_Model->getChatUser($this->input->post('idUser'),$this->input->post('idReciever'));
 
-        $idUser = $data['idUser']; 
+        $idUser = $data['idUser'];
         $idReciever = $data['idReciever'];
         
         redirect("main_controller/indexChat?idUser=$idUser&idReciever=$idReciever");

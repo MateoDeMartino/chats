@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <title>Document</title>
 </head>
-<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
 
 <body>
   <div class="container">
@@ -16,9 +15,8 @@
         <div class="card border-0 shadow rounded-3 my-5">
           <div class="card-body p-4 p-sm-5">
             <h5 class="card-title text-center mb-5 fw-light fs-5">Add Contact</h5>
-            <?php echo form_open('Contacts_controller/add');?>
-            <?php 
-           
+
+            <?php echo form_open('Contacts_controller/add');
                 echo "<div class='form-floating mb-3'>";
                 $email = array(
                 'type' => 'text',
@@ -28,17 +26,14 @@
                 );
                 echo form_input($email);
                 echo "</div>"; 
-
             ?>
-              
               <input type="hidden" value="<?php echo $this->session->userdata('id'); ?>" name="idUser" >
               <div class="d-grid">
                 <button class="btn btn-outline-primary" type="submit">Add</button>
               </div>
-              <hr class="my-4">
-              
-              
+              <hr> 
               <?php echo form_close();?>
+
                 <div class="d-grid">
                   <button role="link" onclick="window.location.href='../main_controller/index'"  class="btn btn-outline-danger">Cancel
                 </button>
@@ -48,10 +43,10 @@
       </div>
     </div>
   </div>
-  <style>
-    body {
+<style>
+body {
   background: #007bff;
-  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  background: lightblue;
  
 }
 
@@ -77,5 +72,4 @@
 
   </style>
 </body>
-
 </html>
