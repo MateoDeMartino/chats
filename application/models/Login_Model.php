@@ -11,11 +11,15 @@ class Login_Model extends CI_Model{
     }
 
     public function getUserId($idUser){
-        return $this->db->query("select * from users where id = '".$idUser."'")->result_array();
+        return $this->db->query("select * from users where id = ".$idUser."")->result_array();
     }
 
     public function insertUser($email,$pass,$name,$surname){
         $this->db->query("insert into users (name,surname,email,password) values ('".$name."','".$surname."','".$email."','".$pass."')");
+    }
+
+    public function update($name,$email,$number,$password){
+        
     }
 }
 ?>

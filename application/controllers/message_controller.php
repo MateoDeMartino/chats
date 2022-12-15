@@ -10,25 +10,30 @@ class Message_controller extends CI_controller{
         $this->load->library('session');
     }
 
-    public function enterMessage(){
+    public function enterMessage(){ 
 
-        $data['idUser'] = $this->input->post('idUser');
-        $data['idReciever'] = $this->input->post('idReciever');
-        $data['message'] = $this->input->post('content');
-        
-        $date = strtotime($this->input->post('date'));
-        $data['date'] = date('Y/m/d H:i',$date);
+        if($this->input->post('idReciever') != 0){
 
-        $datos['chats'] = $this->Chats_Model->getAll();
-        $datos['user'] = $data['idUser'];
+            $data['idUser'] = $this->input->post('idUser');
+            $data['idReciever'] = $this->input->post('idReciever');
+            $data['message'] = $this->input->post('content');
         
-        $this->Message_Model->enterMessage($data);
-        $datos['messages'] = $this->Message_Model->getChatUser($this->input->post('idUser'),$this->input->post('idReciever'));
+            $date = strtotime($this->input->post('date'));
+            $data['date'] = date('Y/m/d H:i',$date);
 
-        $idUser = $data['idUser'];
-        $idReciever = $data['idReciever'];
+            $datos['chats'] = $this->Chats_Model->getAll();
+            $datos['user'] = $data['idUser'];
         
-        redirect("main_controller/indexChat?idUser=$idUser&idReciever=$idReciever");
+            $this->Message_Model->enterMessage($data);
+            $datos['messages'] = $this->Message_Model->getChatUser($this->input->post('idUser'),$this->input->post('idReciever'));
+
+            $idUser = $data['idUser'];
+            $idReciever = $data['idReciever'];
+        
+            redirect("main_controller/indexChat?idUser=$idUser&idReciever=$idReciever");
+        }else{
+            header("Location: ../main_controller/index");
+        }
         
     }
 

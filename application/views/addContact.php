@@ -35,8 +35,7 @@
               <?php echo form_close();?>
 
                 <div class="d-grid">
-                  <button role="link" onclick="window.location.href='../main_controller/index'"  class="btn btn-outline-danger">Cancel
-                </button>
+                  <button role="link" onclick="window.location.href='../main_controller/index'"  class="btn btn-outline-danger">Cancel</button>
               </div>
           </div>
         </div>

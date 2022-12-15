@@ -19,7 +19,7 @@ class Login_controller extends CI_controller{
     
     public function login(){
         $result = $this->Login_Model->getUser($this->input->post('email'));
-        $this->session->set_userdata($result[0]);       
+        $this->session->set_userdata('id',$result[0]['id']);       
         $pass = $result[0]['password'];
         if($pass == $this->input->post('password')){ 
             header("Location: ../main_controller/index");
@@ -32,6 +32,22 @@ class Login_controller extends CI_controller{
             header("Location: ../main_controller/login");
         }
  
+    }
+
+    public function update(){
+        $this->input->post('name');
+        $this->input->post('email');
+        $this->input->post('number');
+        $this->input->post('password');
+        $this->input->post('passwordRepeat');
+
+        if($this->input->post('password')==$this->input->post('passwordRepeat')){
+            $this->Login_Model->update($this->input->post('name'),$this->input->post('email')$this->input->post('number')$this->input->post('password'))
+        }else{
+            
+        }
+
+
     }
 
 

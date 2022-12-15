@@ -38,6 +38,20 @@ class Main_controller extends CI_controller{
         $this->load->view('addContact'); 
     }
 
+    public function profile(){
+        $data['user'] = $this->Login_Model->getUserId($this->session->userdata('id'));
+        $this->load->view('profile',$data);
+    }
+
+    public function profileUser(){
+        $data['user'] = $this->Login_Model->getUserId($_GET['idReciever']);
+        $this->load->view('profile',$data);
+    }
+    public function profileEdit(){
+        $data['user'] = $this->Login_Model->getUserId($this->session->userdata('id'));
+        $data['edit'] = true; 
+        $this->load->view('profile',$data);    
+    }    
     public function logout(){
         session_destroy();
         $this->load->view('login');

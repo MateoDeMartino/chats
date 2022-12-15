@@ -68,16 +68,15 @@
                             </a>
                             
                             <div class="chat-about">
-                                <button role="link"  onclick="window.location.href='../main_controller/addContact'"  class="btn"><?php echo $reciever[0]['name']," ", $reciever[0]['surname']  ?></button>
+                                <button role="link"  onclick="window.location.href='../main_controller/profileUser?idReciever=<?php echo $idReciever2; ?>'"  class="btn"><?php echo $reciever[0]['name']," ", $reciever[0]['surname']  ?></button>
                             </div>
                             <?php } ?>
                         </div>
 
                         <div class="col-lg-6 hidden-sm text-right">
-                            <button role="link"  onclick="window.location.href='../main_controller/addContact'"  class="btn btn-outline-dark">Profile</button>
-                            <button role="link"  onclick="window.location.href='../main_controller/addContact'"  class="btn btn-outline-dark">Add Contact</button>
-                            <button role="link"  onclick="window.location.href='../main_controller/logout'"  class="btn btn-danger">logout</button>
-                        </div>
+                            <button role="link"  onclick="window.location.href='../main_controller/addContact'" class="btn btn-outline-dark">Add Contact</button>
+                            <button role="link"  onclick="window.location.href='../main_controller/profile'" style="margin-left: 10px"  class="btn btn-outline-dark">Profile</button>
+                         </div>
                     </div>
                 </div>
 
@@ -133,7 +132,7 @@
                         <input type="hidden" value="<?php echo $idUser.""?>"  name="idUser">
                         <input type="hidden" value="<?php echo $idReciever2.""?>"  name="idReciever">
           
-                        <?php echo form_close();?>
+                    <?php echo form_close();?>
                     </div>
                 </div>
             </div>
@@ -146,6 +145,7 @@
 body{
     background-color: lightblue;
     margin-top:20px;
+    font-family: 'Montserrat', sans-serif;
 }
 .card {
     background: #fff;
