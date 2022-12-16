@@ -14,6 +14,10 @@ class Contacts_Model extends CI_Model{
         return $this->db->query("select * from users where email = '".$email."'")->result_array();
     }
 
+    public function searchContact($idUser,$idReciever){
+        return $rhis->db->query("select");
+    }
+
     public function getById($idReciever){        
         return $this->db->query("select * from users where id = ".$idReciever."")->result_array();
     }

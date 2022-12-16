@@ -24,7 +24,9 @@
                             <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
                         </div>
                         <form action="../login_controller/update" method="post">
-                        <input type="text" name="name" value="<?php echo $user[0]['name']." ".$user[0]['surname']; ?>" placeholder="<?php echo $user[0]['name']." ".$user[0]['surname']; ?>">
+                        <h6 class="f-w-600">Email</h6>
+                        <br>
+                        <input type="text" name="email" value="<?php echo $user[0]['email'] ?>" placeholder="<?php echo $user[0]['email']; ?>">
                         <br>
                     </div>
                 </div>
@@ -33,12 +35,12 @@
                         <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <p class="m-b-10 f-w-600">Email</p>
-                                    <input type="email" name="email" value="<?php echo $user[0]['email']; ?>" placeholder="<?php echo $user[0]['email']; ?>" >
+                                    <p class="m-b-10 f-w-600">Name</p>
+                                    <input type="text" name="name" value="<?php echo $user[0]['name']; ?>" placeholder="<?php echo $user[0]['name']; ?>" >
                                 </div>
                                 <div class="col-sm-6">
-                                    <p class="m-b-10 f-w-600">Phone</p>
-                                    <input type="number" name="number" value="<?php  echo 98979989898?>" placeholder="<?php ?>" >
+                                    <p class="m-b-10 f-w-600">Surname</p>
+                                    <input type="text" name="surname" value="<?php echo $user[0]['surname']; ?>" placeholder="<?php echo $user[0]['surname']; ?>" >
                                     
                                 </div>
                             </div>
@@ -54,14 +56,15 @@
                                 </div>
                             </div>
                             <ul class="social-link list-unstyled m-t-40 m-b-10">
-                                <button role="link" onclick="window.location.href='../main_controller/profile'"  class="btn btn-outline-danger">Cancel</button>
                                 <?php if(!isset($_GET['idReciever'])){ ?>
-                                <button type="submit" style='margin-left: 260px'  class="btn btn-outline-success" >Update</button>
+                                <button type="submit"   class="btn btn-outline-success" >Update</button>
                                 <?php } ?>
+                                </form>
+                                <button role="link" onclick="window.location.href='../main_controller/profile'" style='margin-left: 260px'  class="btn btn-outline-danger">Cancel</button>
                             </ul>
                             </div>
                         </div>
-                    </form>
+                    
                     </div>
                 </div>
 
@@ -71,7 +74,9 @@
                         <div class="m-b-25">
                             <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
                         </div>
-                        <h6 class="f-w-600"><?php echo $user[0]['name']." ".$user[0]['surname']; ?></h6>
+                        <h6 class="f-w-600">Email</h6>
+                        <br>
+                        <h6 class="f-w-600"><?php echo $user[0]['email']; ?></h6>
                         <br>
                         <?php
                         if(!isset($_GET['idReciever'])){?>
@@ -84,12 +89,12 @@
                         <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <p class="m-b-10 f-w-600">Email</p>
-                                    <h6 class="text-muted f-w-400"><?php echo $user[0]['email']; ?></h6>
+                                    <p class="m-b-10 f-w-600">Name</p>
+                                    <h6 class="text-muted f-w-400"><?php echo $user[0]['name']; ?></h6>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p class="m-b-10 f-w-600">Phone</p>
-                                    <h6 class="text-muted f-w-400">98979989898</h6>
+                                    <p class="m-b-10 f-w-600">Surname</p>
+                                    <h6 class="text-muted f-w-400"><?php echo $user[0]['surname']; ?></h6>
                                 </div>
                             </div>
                             <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
@@ -157,6 +162,7 @@
     justify-content:center;
     align-items:center;
     padding-top:150px;
+   
 }
 
 .card {
@@ -204,7 +210,7 @@ h6 {
 }
 
 .card .card-block p {
-    width: 200px;
+    width: 220px;
     height: 40px;
     line-height: 25px;
 }

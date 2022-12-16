@@ -23,7 +23,7 @@ class Main_controller extends CI_controller{
     public function index(){
         $datos['contacts'] = $this->Contacts_Model->getContacts($this->session->userdata('id'));
         $datos['user'] = $this->Login_Model->getUserId($this->session->userdata('id'));
-        $this->load->view('index2', $datos);
+        $this->load->view('index', $datos);
     }
 
     public function indexChat(){
@@ -31,7 +31,7 @@ class Main_controller extends CI_controller{
         $datos['user'] = $this->Login_Model->getUserId($_GET['idUser']);
         $datos['messages'] = $this->Message_Model->getChatUser($_GET['idUser'],$_GET['idReciever']);
         $datos['reciever'] = $this->Contacts_Model->getById($_GET['idReciever']); 
-        $this->load->view('index2',$datos);
+        $this->load->view('index',$datos);
     }
 
     public function addContact(){
@@ -47,11 +47,19 @@ class Main_controller extends CI_controller{
         $data['user'] = $this->Login_Model->getUserId($_GET['idReciever']);
         $this->load->view('profile',$data);
     }
+
     public function profileEdit(){
         $data['user'] = $this->Login_Model->getUserId($this->session->userdata('id'));
         $data['edit'] = true; 
         $this->load->view('profile',$data);    
     }    
+
+    public function search(){
+        $datos['contacts'] = $this->session->flashdata('contact');
+        $datos['user'] = $this->Login_Model->getUserId($this->session->userdata('id'));
+        $this->load->view('index', $datos);
+    }
+
     public function logout(){
         session_destroy();
         $this->load->view('login');

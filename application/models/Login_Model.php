@@ -18,8 +18,10 @@ class Login_Model extends CI_Model{
         $this->db->query("insert into users (name,surname,email,password) values ('".$name."','".$surname."','".$email."','".$pass."')");
     }
 
-    public function update($name,$email,$number,$password){
-        
+    public function update($idUser,$name,$surname,$email,$password){
+       // UPDATE `users` SET ,`name`='$name',`surname`='$surname',`email`='$email',`password`='$password' WHERE id = $idUser
+       $this->db->query("update users set name= '".$name."', surname = '".$surname."', email = '".$email."', password = '".$password."' where id =".$idUser);
+    
     }
 }
 ?>

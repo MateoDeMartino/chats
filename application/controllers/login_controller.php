@@ -35,19 +35,17 @@ class Login_controller extends CI_controller{
     }
 
     public function update(){
-        $this->input->post('name');
-        $this->input->post('email');
-        $this->input->post('number');
-        $this->input->post('password');
-        $this->input->post('passwordRepeat');
-
         if($this->input->post('password')==$this->input->post('passwordRepeat')){
-            $this->Login_Model->update($this->input->post('name'),$this->input->post('email')$this->input->post('number')$this->input->post('password'))
+            $this->Login_Model->update($this->session->userdata('id'),$this->input->post('name'),$this->input->post('surname'),$this->input->post('email'),$this->input->post('password'));
+            header("Location: ../main_controller/profile");
         }else{
-            
+            ?>  
+             <script>
+				alert('Error; Contraseñas diferentes');
+			</script>
+            <?php
+            header("Location: ../main_controller/profile");   
         }
-
-
     }
 
 

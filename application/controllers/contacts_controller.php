@@ -30,6 +30,24 @@ class Contacts_controller extends CI_controller{
             header("Location: ../main_controller/index");
         }
     }
+
+    public function search(){
+        if (filter_var($this->input->post('email'), FILTER_VALIDATE_EMAIL)) {
+            $contact = $this->Contacts_Model->getByEmail($this->input->post('email'));
+            if(isset($contact[0]['id'])){
+                //var_dump($contact[0]['id']);
+                $aux = $this->Contacts_Model->searchContact($idUser,$contact[0]['id']);
+            }else{
+                echo "nada";
+            }
+            //$ = $this->Contacts_Model->searchContact($this->input->post('email'));
+
+            //$this->session->set_flashdata('contact',$contact);
+            //header("Location: ../main_controller/search");
+        }else{
+            header("Location: ../main_controller/index");
+        }
+    }
     
 }
 

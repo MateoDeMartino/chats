@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-    <link rel="stylesheet" href="../js/login.js">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 <body>
 <div class="container" id="container">
@@ -28,18 +27,14 @@
 			<button>Sign In</button>
 		</form>
 	</div>
+
 	<div class="form-container sign-up-container">
-		<form action="../login_controller/create" method="POST">
+		<form action="../login_controller/createUser" method="POST">
 			<h1>Create Account</h1>
-			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-			</div>
-			<span>or use your email for registration</span>
-			<input type="text" name="name" placeholder="Name"/>
-			<input type="email" name="email" placeholder="Email"/>
-			<input type="password" name="password" placeholder="Password"/>
+			<input type="text" name="name" placeholder="Name" required>
+			<input type="text" name="surname" placeholder="Surname" required>
+			<input type="email" name="email" placeholder="Email" required>
+			<input type="password" name="password" placeholder="Password" required>
 			<button>Sign Up</button>
 		</form>
 	</div>
@@ -59,6 +54,19 @@
 		</div>
 	</div>
 </div>
+<script>
+	const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
+</script>
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
