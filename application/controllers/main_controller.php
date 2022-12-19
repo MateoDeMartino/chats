@@ -55,7 +55,7 @@ class Main_controller extends CI_controller{
     }    
 
     public function search(){
-        $datos['contacts'] = $this->session->flashdata('contact');
+        $datos['search'] = $this->session->flashdata('contacts');
         $datos['user'] = $this->Login_Model->getUserId($this->session->userdata('id'));
         $this->load->view('index', $datos);
     }

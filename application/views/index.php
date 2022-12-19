@@ -38,7 +38,9 @@
 
                 <ul class="list-unstyled chat-list mt-2 mb-0 ">
                     <?php 
-                        foreach($contacts as $element){
+                    if(isset($search)){
+
+                        foreach($search as $element){
                             $idSender = $element['id'];
                             if($idSender == $idUser){
                             }else{
@@ -55,6 +57,25 @@
                     </button>
                     <hr>
                     <?php }} ?> 
+                    <?php
+                    }else{
+                        foreach($contacts as $element){
+                            $idSender = $element['id'];
+                            if($idSender == $idUser){
+                            }else{
+                                $idReciever = $element['id'];
+                    ?>
+                    <button role="link" onclick="window.location.href='../main_controller/indexChat?idUser=<?php echo $idUser; ?>&idReciever=<?php echo $idReciever; ?>'"  aria-pressed="true" class="btn  widght=100 " >
+                    <li class="clearfix">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
+                        <div class="about">
+                            <div class="name"><?php echo $element['name']," ", $element['surname']  ?></div>
+                            <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>                                            
+                        </div>
+                    </li>
+                    </button>
+                    <hr>
+                    <?php }}} ?> 
                 </ul>
                 </div>
             </div>
