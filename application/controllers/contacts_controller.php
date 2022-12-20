@@ -12,17 +12,43 @@ class Contacts_controller extends CI_controller{
         $this->load->library('session');
     }
 
-    public function add(){
-        $idUser = $this->session->userdata('id');
-        $email = $this->input->post('email');
+    public function show(){
         $contact = $this->Contacts_Model->getByEmail($this->input->post('email'));
-        $aux = $this->Contacts_Model->searchContact($this->session->userdata('id'),$this->input->post('email'));
-        
-        if($aux == null){
-            $this->Contacts_Model->add($idUser,$contact[0]['id']);
-            header("location: ../main_controller/index");
+        if(isset($contact[0]['id'])){
+            $this->session->set_flashdata('contacts',$contact);
+            header("Location: ../main_controller/show");
         }else{
-            header("Location: ../main_controller/index");
+            ?>
+            <script>
+                alert("No se encuentra ese contacto")
+                window.location.href="../main_controller/index";
+            </script>
+            <?php
+        }
+    }
+
+    public function add(){
+        $contact = $this->Contacts_Model->getByEmail($_GET['email']);
+        $aux = $this->Contacts_Model->searchContact($this->session->userdata('id'),$_GET['email']);
+        if(isset($contact[0]['id'])){
+            if($aux == null){
+                $this->Contacts_Model->add($this->session->userdata('id'),$contact[0]['id']);
+                header("location: ../main_controller/index");
+            }else{
+                ?>
+                <script>
+                    alert("Ya esta guardado");
+                    window.location.href="../main_controller/index";
+                </script>
+                <?php
+            }
+        }else{
+            ?>
+            <script>
+                alert("No se encuentra ese contacto")
+                window.location.href="../main_controller/index";
+            </script>
+            <?php
         }
     }
 
@@ -32,9 +58,21 @@ class Contacts_controller extends CI_controller{
             if(isset($contact[0]['id'])){
                 $this->session->set_flashdata('contacts',$contact);
                 header("Location: ../main_controller/search");
+            }else{
+                ?>
+                <script>
+                    alert("No se encuentra ese contacto")
+                    window.location.href="../main_controller/index";
+                </script>
+                <?php
             }
         }else{
-            header("Location: ../main_controller/index");
+            ?>
+            <script>
+                alert("No es un Mail")
+                window.location.href="../main_controller/index";
+            </script>
+            <?php
         }
     }
     

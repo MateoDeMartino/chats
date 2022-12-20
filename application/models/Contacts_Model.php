@@ -23,8 +23,8 @@ class Contacts_Model extends CI_Model{
     }
     
     public function add($idUser, $idNewContact){       
-        $this->db->query("insert into contacts (id_user,id_contact) values ('".$idUser."','".$idNewContact."')");
-        $this->db->query("insert into contacts (id_user,id_contact) values ('".$idNewContact."','".$idUser."')");
+        $this->db->query("insert into contacts (id_user,id_contact) values (".$idUser.",".$idNewContact.")");
+        $this->db->query("insert into contacts (id_user,id_contact) values (".$idNewContact.",".$idUser.")");
     }
 
 }

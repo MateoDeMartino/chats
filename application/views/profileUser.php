@@ -20,23 +20,23 @@
                         <div class="m-b-25">
                             <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
                         </div>
-                        <h6 class="f-w-600"><?php echo $user[0]['name']." ".$user[0]['surname']; ?></h6>
+                        <h6 class="f-w-600">Email</h6>
                         <br>
-                        <button class="btn2" role="link"><i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i></button>
-                        
+                        <h6 class="f-w-600"><?php echo $user[0]['email']; ?></h6>
+                        <br>
                     </div>
                 </div>
                 <div class="col-sm-8">
                     <div class="card-block">
                         <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
-                            <div class="row">
+                        <div class="row">
                                 <div class="col-sm-6">
-                                    <p class="m-b-10 f-w-600">Email</p>
-                                    <h6 class="text-muted f-w-400"><?php echo $user[0]['email']; ?></h6>
+                                    <p class="m-b-10 f-w-600">Name</p>
+                                    <h6 class="text-muted f-w-400"><?php echo $user[0]['name']; ?></h6>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p class="m-b-10 f-w-600">Phone</p>
-                                    <h6 class="text-muted f-w-400">98979989898</h6>
+                                    <p class="m-b-10 f-w-600">Surname</p>
+                                    <h6 class="text-muted f-w-400"><?php echo $user[0]['surname']; ?></h6>
                                 </div>
                             </div>
                             <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
@@ -52,7 +52,7 @@
                             </div>
                             <ul class="social-link list-unstyled m-t-40 m-b-10">
                                 <button role="link" onclick="window.location.href='../main_controller/index'"  class="btn btn-outline-dark">Back</button>
-                                <button role="link" onclick="window.location.href='../main_controller/logout'" style="margin-left: 262px"  class="btn btn-outline-danger">Logout</button>
+                                <button role="link" onclick="window.location.href='../contacts_controller/add?email=<?php echo $user[0]['email']; ?>'" style="margin-left: 262px"  class="btn btn-outline-success">Add</button>
                             </ul>
                             </div>
                         </div>
@@ -133,7 +133,7 @@ h6 {
 }
 
 .card .card-block p {
-    width: 200px;
+    width: 220px;
     height: 40px;
     line-height: 25px;
 }

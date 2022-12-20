@@ -14,9 +14,9 @@
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card border-0 shadow rounded-3 my-5">
           <div class="card-body p-4 p-sm-5">
-            <h5 class="card-title text-center mb-5 fw-light fs-5">Add Contact</h5>
+            <h5 class="card-title text-center mb-5 fw-light fs-5">Search Contact</h5>
 
-            <?php echo form_open('Contacts_controller/add');
+            <?php echo form_open('Contacts_controller/show  ');
                 echo "<div class='form-floating mb-3'>";
                 $email = array(
                 'type' => 'text',
@@ -29,7 +29,7 @@
             ?>
               <input type="hidden" value="<?php echo $this->session->userdata('id'); ?>" name="idUser" >
               <div class="d-grid">
-                <button class="btn btn-outline-primary" type="submit">Add</button>
+                <button class="btn btn-outline-primary" type="submit">Search</button>
               </div>
               <hr> 
               <?php echo form_close();?>

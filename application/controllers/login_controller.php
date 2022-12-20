@@ -19,32 +19,36 @@ class Login_controller extends CI_controller{
     
     public function login(){
         $result = $this->Login_Model->getUser($this->input->post('email'));
-        $this->session->set_userdata('id',$result[0]['id']);       
         $pass = $result[0]['password'];
-        if($pass == $this->input->post('password')){ 
+        if($pass == $this->input->post('password')){
+            $this->session->set_userdata('id',$result[0]['id']);       
             header("Location: ../main_controller/index");
         }else{
             ?>
             <script>
 				alert('Error; Email o Contraseña incorrecta');
+                window.location.href="../main_controller/login";
 			</script>
             <?php
-            header("Location: ../main_controller/login");
         }
- 
     }
 
     public function update(){
         if($this->input->post('password')==$this->input->post('passwordRepeat')){
             $this->Login_Model->update($this->session->userdata('id'),$this->input->post('name'),$this->input->post('surname'),$this->input->post('email'),$this->input->post('password'));
-            header("Location: ../main_controller/profile");
+            ?>  
+             <script>
+				alert('Actualizado con exito!');
+                window.location.href="../main_controller/profile";
+			</script>
+            <?php
         }else{
             ?>  
              <script>
 				alert('Error; Contraseñas diferentes');
+                window.location.href="../main_controller/index";
 			</script>
             <?php
-            header("Location: ../main_controller/profile");   
         }
     }
 

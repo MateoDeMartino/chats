@@ -86,7 +86,7 @@
                         <div class="col-lg-6">
                             <?php if(isset($reciever)){ ?>
                             <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
                             </a>
                             
                             <div class="chat-about">

@@ -31,10 +31,10 @@
 	<div class="form-container sign-up-container">
 		<form action="../login_controller/createUser" method="POST">
 			<h1>Create Account</h1>
-			<input type="text" name="name" placeholder="Name" required>
-			<input type="text" name="surname" placeholder="Surname" required>
-			<input type="email" name="email" placeholder="Email" required>
-			<input type="password" name="password" placeholder="Password" required>
+			<input type="text" name="name" placeholder="Name" required="">
+			<input type="text" name="surname" placeholder="Surname" required="">
+			<input type="email" name="email" placeholder="Email" required="">
+			<input type="password" name="password" placeholder="Password" required="" minlength="6" maxlength="20">
 			<button>Sign Up</button>
 		</form>
 	</div>

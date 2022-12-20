@@ -21,17 +21,17 @@ class Main_controller extends CI_controller{
     }
 
     public function index(){
-        $datos['contacts'] = $this->Contacts_Model->getContacts($this->session->userdata('id'));
-        $datos['user'] = $this->Login_Model->getUserId($this->session->userdata('id'));
-        $this->load->view('index', $datos);
+        $data['contacts'] = $this->Contacts_Model->getContacts($this->session->userdata('id'));
+        $data['user'] = $this->Login_Model->getUserId($this->session->userdata('id'));
+        $this->load->view('index', $data);
     }
 
     public function indexChat(){
-        $datos['contacts'] = $this->Contacts_Model->getContacts($_GET['idUser']);
-        $datos['user'] = $this->Login_Model->getUserId($_GET['idUser']);
-        $datos['messages'] = $this->Message_Model->getChatUser($_GET['idUser'],$_GET['idReciever']);
-        $datos['reciever'] = $this->Contacts_Model->getById($_GET['idReciever']); 
-        $this->load->view('index',$datos);
+        $data['contacts'] = $this->Contacts_Model->getContacts($_GET['idUser']);
+        $data['user'] = $this->Login_Model->getUserId($_GET['idUser']);
+        $data['messages'] = $this->Message_Model->getChatUser($_GET['idUser'],$_GET['idReciever']);
+        $data['reciever'] = $this->Contacts_Model->getById($_GET['idReciever']); 
+        $this->load->view('index',$data);
     }
 
     public function addContact(){
@@ -51,13 +51,18 @@ class Main_controller extends CI_controller{
     public function profileEdit(){
         $data['user'] = $this->Login_Model->getUserId($this->session->userdata('id'));
         $data['edit'] = true; 
-        $this->load->view('profile',$data);    
+        $this->load->view('profile',$data);      
     }    
 
+    public function show(){
+        $data['user'] = $this->session->flashdata('contacts');
+        $this->load->view('profileUser',$data);
+    }
+
     public function search(){
-        $datos['search'] = $this->session->flashdata('contacts');
-        $datos['user'] = $this->Login_Model->getUserId($this->session->userdata('id'));
-        $this->load->view('index', $datos);
+        $data['search'] = $this->session->flashdata('contacts');
+        $data['user'] = $this->Login_Model->getUserId($this->session->userdata('id'));
+        $this->load->view('index', $data);
     }
 
     public function logout(){
@@ -65,6 +70,5 @@ class Main_controller extends CI_controller{
         $this->load->view('login');
     }
     
-
 }
 ?>

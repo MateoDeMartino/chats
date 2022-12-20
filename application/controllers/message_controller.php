@@ -11,11 +11,7 @@ class Message_controller extends CI_controller{
     }
 
     public function enterMessage(){ 
-
         if($this->input->post('idReciever') != 0){
-
-            var_dump($this->session->userdata());
-
             $data['idUser'] = $this->input->post('idUser');
             $data['idReciever'] = $this->input->post('idReciever');
             $data['message'] = $this->input->post('content');
@@ -34,8 +30,6 @@ class Message_controller extends CI_controller{
         
             redirect("main_controller/indexChat?idUser=$idUser&idReciever=$idReciever");
         }else{
-            var_dump($this->session->userdata('id'));
-
             header("Location: ../main_controller/index");
         }
         
