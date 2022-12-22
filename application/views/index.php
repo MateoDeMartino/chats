@@ -48,7 +48,13 @@
                     ?>
                     <button role="link" onclick="window.location.href='../main_controller/indexChat?idUser=<?php echo $idUser; ?>&idReciever=<?php echo $idReciever; ?>'"  aria-pressed="true" class="btn  widght=100 " >
                     <li class="clearfix">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
+                    <?php
+                            if(isset($user[0]['photo'])){
+                                echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($element['photo'])))."'  class='img-radius' alt='User-Profile-Image'>";
+                            }else{
+                                echo "<img src='https://img.icons8.com/ios-glyphs/30/null/user--v1.png'  class='img-radius' alt='User-Profile-Image'>";
+                            }
+                        ?>
                         <div class="about">
                             <div class="name"><?php echo $element['name']," ", $element['surname']  ?></div>
                             <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>                                            
@@ -56,8 +62,8 @@
                     </li>
                     </button>
                     <hr>
-                    <?php }} ?> 
-                    <?php
+                    <?php   }
+                        } 
                     }else{
                         foreach($contacts as $element){
                             $idSender = $element['id'];
@@ -67,7 +73,13 @@
                     ?>
                     <button role="link" onclick="window.location.href='../main_controller/indexChat?idUser=<?php echo $idUser; ?>&idReciever=<?php echo $idReciever; ?>'"  aria-pressed="true" class="btn  widght=100 " >
                     <li class="clearfix">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
+                        <?php
+                            if(isset($user[0]['photo'])){
+                                echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($element['photo'])))."'  class='img-radius' alt='User-Profile-Image'>";
+                            }else{
+                                echo "<img src='https://img.icons8.com/ios-glyphs/30/null/user--v1.png'  class='img-radius' alt='User-Profile-Image'>";
+                            }
+                        ?>
                         <div class="about">
                             <div class="name"><?php echo $element['name']," ", $element['surname']  ?></div>
                             <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>                                            
@@ -86,7 +98,13 @@
                         <div class="col-lg-6">
                             <?php if(isset($reciever)){ ?>
                             <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
+                            <?php
+                            if(isset($user[0]['photo'])){
+                                echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($element['photo'])))."'  class='img-radius' alt='User-Profile-Image'>";
+                            }else{
+                                echo "<img src='https://img.icons8.com/ios-glyphs/30/null/user--v1.png'  class='img-radius' alt='User-Profile-Image'>";
+                            }
+                            ?>
                             </a>
                             
                             <div class="chat-about">
@@ -250,6 +268,11 @@ body{
     font-size: 13px
 }
 
+.img-radius {
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
+}
 
 .chat .chat-header {
     padding: 15px 20px;

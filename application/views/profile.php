@@ -20,10 +20,17 @@
 
                 <div class="col-sm-4 bg-c-lite-green user-profile">
                     <div class="card-block text-center text-white">
-                        <div class="m-b-25">
-                            <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
-                        </div>
-                        <form action="../login_controller/update" method="post">
+                        <form action="../login_controller/update" method="post" enctype="multipart/form-data">
+                            <div class="m-b-25">
+                                <?php
+                                if(isset($user[0]['photo'])){
+                                    echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($user[0]['photo'])))."'  class='img-radius' alt='User-Profile-Image'>";
+                                }else{
+                                    echo "<img src='https://img.icons8.com/ios-glyphs/30/null/user--v1.png'  class='img-radius' alt='User-Profile-Image'>";
+                                }
+                                ?>
+                            </div>
+                            <input type="file" name="photo" value="<?php echo $user[0]['photo']; ?>" >
                         <h6 class="f-w-600">Email</h6>
                         <br>
                         <input type="text" name="email" value="<?php echo $user[0]['email'] ?>" placeholder="<?php echo $user[0]['email']; ?>">
@@ -72,7 +79,13 @@
                 <div class="col-sm-4 bg-c-lite-green user-profile">
                     <div class="card-block text-center text-white">
                         <div class="m-b-25">
-                            <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
+                        <?php
+                                if(isset($user[0]['photo'])){
+                                    echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($user[0]['photo'])))."'  class='img-radius' alt='User-Profile-Image'>";
+                                }else{
+                                    echo "<img src='https://img.icons8.com/ios-glyphs/30/null/user--v1.png'  class='img-radius' alt='User-Profile-Image'>";
+                                }
+                                ?>   
                         </div>
                         <h6 class="f-w-600">Email</h6>
                         <br>
@@ -203,6 +216,8 @@
 
 .img-radius {
     border-radius: 5px;
+    width: 100px;
+    height: 100px;
 }
  
 h6 {

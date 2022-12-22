@@ -34,12 +34,18 @@ class Login_controller extends CI_controller{
     }
 
     public function update(){
+        
         if($this->input->post('password')==$this->input->post('passwordRepeat')){
-            $this->Login_Model->update($this->session->userdata('id'),$this->input->post('name'),$this->input->post('surname'),$this->input->post('email'),$this->input->post('password'));
+
+            echo "aca";
+            var_dump(addslashes(file_get_contents($_FILES['photo']['tmp_name'])));
+            echo "acaabajoi";
+
+            //$this->Login_Model->update($this->session->userdata('id'),$this->input->post('name'),$this->input->post('surname'),$this->input->post('email'),$this->input->post('password'),addslashes(file_get_contents($_FILES['photo']['tmp_name'])));
             ?>  
              <script>
-				alert('Actualizado con exito!');
-                window.location.href="../main_controller/profile";
+				//alert('Actualizado con exito!');
+                //window.location.href="../main_controller/profile";
 			</script>
             <?php
         }else{
