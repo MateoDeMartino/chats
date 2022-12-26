@@ -13,6 +13,7 @@
 <body>
 <div class="container" id="container">
     <div class="form-container sign-in-container">
+		<!--login-->
 		<form action="../login_controller/login" method="POST">
 			<h1>Sign in</h1>
 			<div class="social-container">
@@ -24,11 +25,12 @@
 			<input type="email" name="email" placeholder="Email" />
 			<input type="password" name="password" placeholder="Password" />
 			<a href="#">Forgot your password?</a>
-			<button>Sign In</button>
+			<button>Log In</button>
 		</form>
 	</div>
 
 	<div class="form-container sign-up-container">
+		<!--singup-->
 		<form action="../login_controller/createUser" method="POST">
 			<h1>Create Account</h1>
 			<input type="text" name="name" placeholder="Name" required="">
@@ -54,8 +56,9 @@
 		</div>
 	</div>
 </div>
+
 <script>
-	const signUpButton = document.getElementById('signUp');
+const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
 
@@ -67,6 +70,7 @@ signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
 </script>
+
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 

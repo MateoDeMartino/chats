@@ -1,7 +1,7 @@
 <?php
 class Login_controller extends CI_controller{
 
-    public function __construct() {
+    public function __construct(){
         parent::__construct();
         $this->load->helper('url');
         $this->load->helper('form');
@@ -34,20 +34,34 @@ class Login_controller extends CI_controller{
     }
 
     public function update(){
-        
         if($this->input->post('password')==$this->input->post('passwordRepeat')){
-
-            echo "aca";
-            var_dump(addslashes(file_get_contents($_FILES['photo']['tmp_name'])));
-            echo "acaabajoi";
-
-            //$this->Login_Model->update($this->session->userdata('id'),$this->input->post('name'),$this->input->post('surname'),$this->input->post('email'),$this->input->post('password'),addslashes(file_get_contents($_FILES['photo']['tmp_name'])));
+            if($_FILES['photo']['tmp_name'] != null ){
+                $this->Login_Model->update($this->session->userdata('id'),$this->input->post('name'),$this->input->post('surname'),$this->input->post('email'),$this->input->post('password'),addslashes(file_get_contents($_FILES['photo']['tmp_name'])));
             ?>  
              <script>
-				//alert('Actualizado con exito!');
-                //window.location.href="../main_controller/profile";
+				alert('Actualizado con exito!');
+                window.location.href="../main_controller/profile";
 			</script>
             <?php
+            }else{
+                //$this->Login_Model->update($this->session->userdata('id'),$this->input->post('name'),$this->input->post('surname'),$this->input->post('email'),$this->input->post('password'), addslashes(base64_decode(stripslashes($user[0]['photo']))));
+
+                $user = $this->Contacts_Model->getByEmail($this->input->post('email'));
+
+                $this->Login_Model->update($this->session->userdata('id'),$this->input->post('name'),$this->input->post('surname'),$this->input->post('email'),$this->input->post('password'), addslashes(base64_decode($user[0]['photo'])));
+                
+                var_dump($user[0]['photo']);
+                echo "<br>";
+
+                var_dump(addslashes(base64_decode(stripslashes($user[0]['photo']))));
+                //addslashes(base64_encode(stripslashes($user[0]['photo'])));
+                ?>  
+                <script>
+				    //alert('Actualizado con exito!');
+                    //window.location.href="../main_controller/profile";
+			    </script>
+                <?php
+            }
         }else{
             ?>  
              <script>

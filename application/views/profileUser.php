@@ -19,7 +19,7 @@
                     <div class="card-block text-center text-white">
                         <div class="m-b-25">
                         <?php
-                            if(isset($user[0]['photo'])){
+                            if($user[0]['photo'] != ""){
                                 echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($user[0]['photo'])))."'  class='img-radius' alt='User-Profile-Image'>";
                             }else{
                                 echo "<img src='https://img.icons8.com/ios-glyphs/30/null/user--v1.png'  class='img-radius' alt='User-Profile-Image'>";

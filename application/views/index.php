@@ -36,10 +36,10 @@
                 <hr>
                 <div class="list-people-chat">
 
+                <!--search-->
                 <ul class="list-unstyled chat-list mt-2 mb-0 ">
                     <?php 
                     if(isset($search)){
-
                         foreach($search as $element){
                             $idSender = $element['id'];
                             if($idSender == $idUser){
@@ -47,21 +47,22 @@
                                 $idReciever = $element['id'];
                     ?>
                     <button role="link" onclick="window.location.href='../main_controller/indexChat?idUser=<?php echo $idUser; ?>&idReciever=<?php echo $idReciever; ?>'"  aria-pressed="true" class="btn  widght=100 " >
-                    <li class="clearfix">
-                    <?php
-                            if(isset($user[0]['photo'])){
-                                echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($element['photo'])))."'  class='img-radius' alt='User-Profile-Image'>";
-                            }else{
-                                echo "<img src='https://img.icons8.com/ios-glyphs/30/null/user--v1.png'  class='img-radius' alt='User-Profile-Image'>";
-                            }
+                        <li class="clearfix">
+                        <?php
+                                if($element['photo'] != ""){
+                                    echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($element['photo'])))."'  class='img-radius' alt='User-Profile-Image'>";
+                                }else{
+                                    echo "<img src='https://img.icons8.com/ios-glyphs/30/null/user--v1.png'  class='img-radius' alt='User-Profile-Image'>";
+                                }
                         ?>
                         <div class="about">
                             <div class="name"><?php echo $element['name']," ", $element['surname']  ?></div>
                             <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>                                            
-                        </div>
-                    </li>
+                        </div> 
+                        </li>
                     </button>
                     <hr>
+                    <!--list of contacts-->
                     <?php   }
                         } 
                     }else{
@@ -74,7 +75,7 @@
                     <button role="link" onclick="window.location.href='../main_controller/indexChat?idUser=<?php echo $idUser; ?>&idReciever=<?php echo $idReciever; ?>'"  aria-pressed="true" class="btn  widght=100 " >
                     <li class="clearfix">
                         <?php
-                            if(isset($user[0]['photo'])){
+                            if($element['photo'] != ""){
                                 echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($element['photo'])))."'  class='img-radius' alt='User-Profile-Image'>";
                             }else{
                                 echo "<img src='https://img.icons8.com/ios-glyphs/30/null/user--v1.png'  class='img-radius' alt='User-Profile-Image'>";
@@ -92,21 +93,19 @@
                 </div>
             </div>
 
+            <!--chat header-->
             <div class="chat">
                 <div class="chat-header clearfix">
                     <div class="row">
                         <div class="col-lg-6">
-                            <?php if(isset($reciever)){ ?>
-                            <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
-                            <?php
-                            if(isset($user[0]['photo'])){
-                                echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($element['photo'])))."'  class='img-radius' alt='User-Profile-Image'>";
-                            }else{
-                                echo "<img src='https://img.icons8.com/ios-glyphs/30/null/user--v1.png'  class='img-radius' alt='User-Profile-Image'>";
-                            }
-                            ?>
-                            </a>
-                            
+                            <?php 
+                            if(isset($reciever)){
+                                if($reciever[0]['photo'] != ""){
+                                    echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($reciever[0]['photo'])))."'  class='img-radius' alt='User-Profile-Image'>";
+                                }else{
+                                    echo "<img src='https://img.icons8.com/ios-glyphs/30/null/user--v1.png'  class='img-radius' alt='User-Profile-Image'>";
+                                }
+                                ?>
                             <div class="chat-about">
                                 <button role="link"  onclick="window.location.href='../main_controller/profileUser?idReciever=<?php echo $idReciever2; ?>'"  class="btn"><?php echo $reciever[0]['name']," ", $reciever[0]['surname']  ?></button>
                             </div>
@@ -119,7 +118,8 @@
                          </div>
                     </div>
                 </div>
-
+                
+                <!--chat messages-->
                 <div class="chat-history">
                     <ul class="m-b-0">
                     <?php
@@ -132,9 +132,6 @@
 
                                 if ($elemnt['id_second_user'] != $idUser){
                                     $idReciever2 = $elemnt['id_second_user'];
-                                    //$nameContact = $elemnt['name'];
-                                    //$surnameContact = $elemnt['surname']; 
-                  
                                 }
                                 if($message != null){
 
@@ -151,6 +148,7 @@
                                         //Reciever Message
                                         echo "<li class='clearfix'>";
                                         echo "<div class='message-data'>";
+                                        echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($reciever[0]['photo'])))."' alt='avatar'>";
                                         echo "<span class='message-data-time'>$newDate</span>";
                                         echo "</div>";
                                         echo "<div class='message my-message'>$message</div>";
@@ -162,7 +160,8 @@
                     ?>                              
                     </ul>
                 </div>
-
+                    
+                <!--enter message-->
                 <div class="chat-message clearfix">
                     <div class="input-group mb-0">
                     <?php echo form_open('message_controller/entermessage');?>
@@ -205,6 +204,18 @@ body{
 	overflow-y: scroll;
     border-color:white;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: lightblue ;
+  border-radius: 20px;
+}
+
 .chat-app .people-list {
     width: 280px;
     position: absolute;
@@ -356,14 +367,14 @@ body{
 
 .chat .chat-history .my-message:after {
     bottom: 100%;
-    left: 30px;
+    left: 27%;
     border: solid transparent;
     content: " ";
     height: 0;
     width: 0;
     position: absolute;
     pointer-events: none;
-    border-bottom-color: #efefef;
+    border-bottom-color: white;
     border-width: 10px;
     margin-left: -10px
 }
@@ -375,7 +386,7 @@ body{
 
 .chat .chat-history .other-message:after {
     border-bottom-color: lightblue;
-    left: 85%
+    left: 80%
 }
 
 .chat .chat-message {
