@@ -21,6 +21,9 @@ class Login_Model extends CI_Model{
     public function update($idUser,$name,$surname,$email,$password,$photo){
         $this->db->query("update users set name= '".$name."', surname = '".$surname."', email = '".$email."', password = '".$password."', photo  = '".$photo."' where id =".$idUser);
     }
-    
+
+    public function update2($idUser,$name,$surname,$email,$password){
+        $this->db->query("update users set name= '".$name."', surname = '".$surname."', email = '".$email."', password = '".$password."' where id =".$idUser);
+    }
 }
 ?>

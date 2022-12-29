@@ -22,13 +22,13 @@
                             <div class="m-b-25">
                                 <?php
                                 if($user[0]['photo'] != ""){
-                                    echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($user[0]['photo'])))."'  class='img-radius' >";
+                                    echo "<img src='data:image/jpg;base64, ".(base64_encode($user[0]['photo']))."'  class='img-radius' >";
                                 }else{
                                     echo "<img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACZElEQVR4nO2ZPWtUQRSGHxNdiaZQxEpIndhpq6CNJloIJkgKg4VoERQtoiR+INFGC8mfkGisxcq/EPwKiPErWgQLCwUXRaO54cB7YVgkubOz7owyDwwsd89575mvO2dmIJP5Z6gBw8A94CVQV7Hfd/Wf2STNMeAdUKxR3gJDJEgnMOUE+hg4C/QBm1X69OyJY3dbvskwpcC+AyeBdavYdgCnZFtWJpnhVADfgD0efnudygwSmZozJ6wnfDkt3zexPwDDzpywIeOL+TyVhvVsNGYUxJkAjXPSmCYi8wqiN0BjpzRsnYnGVwXRHaDRLQ3Tika5HqSi0zS5Ig3kHmkVeWilNrS+KIAtARpbpfGZiDxXELsCNHZLw9L7aEwriAsBGhelcYeIHFIQ8wFJ4ytpDBCRTqXgFsh4E/4T8n2dwk5xP7AM/PBsVbP9CfwG9pEIN9SyS8BoBftR2ZrPdRJj3GM9KO1ukSiFZ0WSpcgVSYzif+iR7c4h3VqU51nbSIwBYEHBPahg/9BZCPuJTA0YAWadoWJnVDsq+PYALxy/WWnVaCM2HC4Bi04gH4ExYKOHzibgKvDJ0VmU9l8dctZa5509SJks2rOuAF2r/AlgztG1o6HJQN0/crDh3uORnq126u6LafVLu3zPB+Bwq15wRYldoVZrx+Q8ADzTO5fVO0FMSuwXcK3NqXYHcNlJLm82K3RErbGkU/dYDCrdt1iONjOxFwI2TK1mTLG89/1EH5ejTfANxGe9LlALrTeVuS8n2zCltnmb8XEqax89fWhIg8prusrUK9yVxyp1n4oUiZdMJoMfK+YhJaCnoLnkAAAAAElFTkSuQmCC'  class='img-radius' alt='User-Profile-Image'>";
                                 }
                                 ?>
                             </div>
-                            <input type="file" name="photo" value="<?php echo (base64_encode(stripslashes($user[0]['photo']))) ;?>">
+                            <input type="file" name="photo" >
                         <h6 class="f-w-600">Email</h6>
                         <br>
                         <input type="text" name="email" value="<?php echo $user[0]['email'] ?>" placeholder="<?php echo $user[0]['email']; ?>">
@@ -79,7 +79,7 @@
                         <?php
                                 if($user[0]['photo'] != ""){
                                     
-                                    echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($user[0]['photo'])))."'  class='img-radius' alt='User-Profile-Image'>";
+                                    echo "<img src='data:image/jpg;base64, ".(base64_encode($user[0]['photo']))."'  class='img-radius' alt='User-Profile-Image'>";
                                 }else{
                                     echo "<img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFZUlEQVR4nO2dXYhWRRjHf+2qa2VY5GYEfZDdRCRZ9qEUFBWF0EVkEFmBRSxlddOHkZTRpykFFYagGUofNxlYXSh2VRRBXfQlQlhaVKSxWmm1a+rEE7Px9uycd3Xfc87Mnnl+MLDs7jvzP//nPefMmXlmDhiGYRiGYRhGNzAbWASsAzYDu4B9vsjPX/m/PQTMgn8/Y5TMqcAy4EfAHWaRzywFTrGodM5UYJX/9rsOi9SxEjjBAjM6bgF2lxAIXeSydpMF5dCZAKwewdA1wHxgJjAFGO9Lr/+d/G2t/9+ielb6zxhtOBrYWGDgF8CNQM9hOCj/Ow/4sqDODb5No+DM2Bgw7TegD+jqwDXpad3h6woFxc6UAKsDZn0GTCvx63uGP9NCly9D3cCdKh8Akytw6Vjgw0B7cmkzfNd2V+DMmFyhO9IR2Kba7PedguxZFbhnTKvBlenAHtX2ityjcTIwqEzpq7H9BYGHRxkVyJZlga5tV43td/uxr1YNS8iU7sDY1LwIOm5WGn6o+UuRDLMDT+A9EXRMBH5VWi4kQxYpE9ZE1PKq0vIgGfKWMmF+RC23KS1vkiGblQkzI2q5QGmRsa/s6FcmTImopVdp+YUM0c8fEyJq6VFaBsgQPZYUm9T0kLsBLjE95G6AS0wPuRvgEtND7ga4xPSQuwEuMT3kboBLTA+5G+AS00PuBrjE9JC7AS4xPeRugEtMD7kb4BLTUzsDyoCJEbUcqbT8SYbsUCacGFHLSUrLT2SIToC+KKH5fcl+yY43lAl3RtRyt9Iic+zZsVCZsC6h+f37yZBzlAl/RFqrMcnfxFu1SJppluiE57sSuFx9Q8Y8rMzYVnOynLS1XWmQfLFs6Q1cLh6psf1HA88fMbNfkmCJMmUAOLeGds8LPJw+XUO7yTMpkHT9nV/IUxVS9/eBJGvRYgBXAweUQVv8E3QVwdAPpdL2VRaJ//NkYIBPejwzSjRKLoXfBtp5woIxnC6/2F+b9Zdf6dQpC3xdLpB1n+V6kENhHPB6wLQyhsNDdb7m2zTacATweA0Becy3ZYzSwE7JfgIqNQNd7jOCneIsIGnhLCBp4SwgaeEsIGnhLCBp4SwgaeEsIOlwZWDbjU7RO5xeXEKdjafLDwLqiaN3S6h7g6pzj989woZP2pwVnwYuVQdK+jZfXjDA+DFwRQn1NwLJ5721YGNK58sDFc+5DJXPvZYYOxJFZ6pPMND5va6lyJZJcyto+/ZAYkVr+RlYnMuW5NP9drD6HqEvUWv99n9VcSbwThsNQxNjLwNn0zDkpjkH2DSCAYM+EHVmDV4CrA/M57eWg177nCZ0AORm+ckIgZBdSJ+v+IwYidO9hr0jaJV73fVjMTDyLX9/hIOTBIZ7Eku9Oc4ngesUIV0+8nldySPmPgv83eZgZFfp6xJ/88144AbfJS46jv3Acr9TdrLZ7F+3OYD1kRfljJZZXvvBguPanuJx9RWk2Eh5ryG7fJ7f5lUasgHzvSS68KZ1nZ5sst80rgksoxgqy2Pf8JcWCHsFOIbmchTwUsGxr4iVeHdfQMzehp4VRcwteEmMjELUfqPbFxjqkNWsuTED2Bkzeft4n7rfKmB35H13Y3NWICg7Kl5S8R/62indwWvraDhxLvPPJrW+Sum0wEPfi1U3OobQnZz9Vb+c5jnV4O+2Jm/Y0IueKn6BihgXmL94pqrGxjBPKY92VrXk4dJA906GS4zhA6vaJ/GudBarRrZW0UhD2FrHUu+3VSOyeYwRRq8Ck8HJ0tlSYfJB01iovJJ3pZROFa/SzqX0VxGQMl4yn2sZrCIgsQ/KjfFiAaHhATEMwzAMwzAMw6AE/gE10plSBoXPogAAAABJRU5ErkJggg=='  class='img-radius' alt='User-Profile-Image'>";
                                 }

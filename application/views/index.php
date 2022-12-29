@@ -50,7 +50,7 @@
                         <li class="clearfix">
                         <?php
                                 if($element['photo'] != ""){
-                                    echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($element['photo'])))."'  class='img-radius' alt='User-Profile-Image'>";
+                                    echo "<img src='data:image/jpg;base64, ".(base64_encode($element['photo']))."'  class='img-radius' alt='User-Profile-Image'>";
                                 }else{
                                     echo "<img src='https://img.icons8.com/ios-glyphs/30/null/user--v1.png'  class='img-radius' alt='User-Profile-Image'>";
                                 }
@@ -76,7 +76,7 @@
                     <li class="clearfix">
                         <?php
                             if($element['photo'] != ""){
-                                echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($element['photo'])))."'  class='img-radius' alt='User-Profile-Image'>";
+                                echo "<img src='data:image/jpg;base64, ".(base64_encode($element['photo']))."'  class='img-radius' alt='User-Profile-Image'>";
                             }else{
                                 echo "<img src='https://img.icons8.com/ios-glyphs/30/null/user--v1.png'  class='img-radius' alt='User-Profile-Image'>";
                             }
@@ -101,7 +101,7 @@
                             <?php 
                             if(isset($reciever)){
                                 if($reciever[0]['photo'] != ""){
-                                    echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($reciever[0]['photo'])))."'  class='img-radius' alt='User-Profile-Image'>";
+                                    echo "<img src='data:image/jpg;base64, ".(base64_encode($reciever[0]['photo']))."'  class='img-radius' alt='User-Profile-Image'>";
                                 }else{
                                     echo "<img src='https://img.icons8.com/ios-glyphs/30/null/user--v1.png'  class='img-radius' alt='User-Profile-Image'>";
                                 }
@@ -148,7 +148,7 @@
                                         //Reciever Message
                                         echo "<li class='clearfix'>";
                                         echo "<div class='message-data'>";
-                                        echo "<img src='data:image/jpg;base64, ".(base64_encode(stripslashes($reciever[0]['photo'])))."' alt='avatar'>";
+                                        echo "<img src='data:image/jpg;base64, ".(base64_encode($reciever[0]['photo']))."' alt='avatar'>";
                                         echo "<span class='message-data-time'>$newDate</span>";
                                         echo "</div>";
                                         echo "<div class='message my-message'>$message</div>";
@@ -166,7 +166,7 @@
                     <div class="input-group mb-0">
                     <?php echo form_open('message_controller/entermessage');?>
                     
-                        <input type="text" size="98" class="form-control" name="content" placeholder="Enter text here...">                                    
+                        <input type="text" size="90" class="form-control" name="content" placeholder="Enter text here...">                                    
                         <input type="hidden" value="<?php echo date("Y/m/d H:i"); ?>" name="date" size="10" />
                         <input type="hidden" value="<?php echo $idUser.""?>"  name="idUser">
                         <input type="hidden" value="<?php echo $idReciever2.""?>"  name="idReciever">
@@ -186,6 +186,7 @@ body{
     margin-top:20px;
     font-family: 'Montserrat', sans-serif;
 }
+
 .card {
     background: #fff;
     transition: .5s;
@@ -196,6 +197,7 @@ body{
     width: 100%;
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
 }
+
 .list-people-chat{
     height: 630px;
 	width: 260px;
@@ -222,9 +224,7 @@ body{
     left: 0;
     top: 0;
     padding: 20px;
-    z-index: 7
-    
-    
+    z-index: 7;
 }
 
 .chat-app .chat {
@@ -241,12 +241,9 @@ body{
     padding: 10px 15px;
     list-style: none;
     border-radius: 3px;
-    
-     
 }
 
 .people-list .chat-list li:hover {
-    
     cursor: pointer
 }
 
@@ -261,7 +258,6 @@ body{
 .people-list .chat-list img {
     width: 45px;
     border-radius: 50%
-
 }
 
 .people-list img {
