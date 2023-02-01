@@ -15,8 +15,7 @@
         <div class="card border-0 shadow rounded-3 my-5">
           <div class="card-body p-4 p-sm-5">
             <h5 class="card-title text-center mb-5 fw-light fs-5">Search Contact</h5>
-
-            <?php echo form_open('Contacts_controller/show  ');
+              <?php echo form_open('Contacts_controller/show');
                 echo "<div class='form-floating mb-3'>";
                 $email = array(
                 'type' => 'text',
@@ -26,14 +25,13 @@
                 );
                 echo form_input($email);
                 echo "</div>"; 
-            ?>
+              ?>
               <input type="hidden" value="<?php echo $this->session->userdata('id'); ?>" name="idUser" >
               <div class="d-grid">
                 <button class="btn btn-outline-primary" type="submit">Search</button>
               </div>
               <hr> 
               <?php echo form_close();?>
-
                 <div class="d-grid">
                   <button role="link" onclick="window.location.href='../main_controller/index'"  class="btn btn-outline-danger">Cancel</button>
               </div>

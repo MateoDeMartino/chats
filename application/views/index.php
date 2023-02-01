@@ -8,11 +8,10 @@
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     
 </head>
 <body>
-    
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <?php
     if(isset($_GET['idReciever'])){
         $idReciever2 = $_GET['idReciever'];
@@ -20,6 +19,7 @@
         $idReciever2 = 0;
     }
     $idUser = $user[0]['id'];
+    date_default_timezone_set('America/Argentina/Mendoza');
 ?>
 <div class="container">
 <div class="row clearfix">
@@ -33,9 +33,8 @@
                         </form>
                     </div>
                     </div>
-                <hr>
+                <hr>   
                 <div class="list-people-chat">
-
                 <!--search-->
                 <ul class="list-unstyled chat-list mt-2 mb-0 ">
                     <?php 
@@ -92,7 +91,6 @@
                 </ul>
                 </div>
             </div>
-
             <!--chat header-->
             <div class="chat">
                 <div class="chat-header clearfix">
@@ -113,12 +111,12 @@
                         </div>
 
                         <div class="col-lg-6 hidden-sm text-right">
+                            <button role="link"  onclick="window.location.href='../main_controller/addContact'" style="margin-right: 10px " class="btn btn-info">Load File</button>
                             <button role="link"  onclick="window.location.href='../main_controller/addContact'" style="margin-right: 10px " class="btn btn-outline-dark">Add Contact</button>
                             <button role="link"  onclick="window.location.href='../main_controller/profile'" style="margin-right: 10px "  class="btn btn-outline-dark">Profile</button>
                          </div>
                     </div>
                 </div>
-                
                 <!--chat messages-->
                 <div class="chat-history">
                     <ul class="m-b-0">
@@ -160,7 +158,6 @@
                     ?>                              
                     </ul>
                 </div>
-                    
                 <!--enter message-->
                 <div class="chat-message clearfix">
                     <div class="input-group mb-0">
